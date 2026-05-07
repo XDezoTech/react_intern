@@ -1,11 +1,49 @@
-TravelCo – React Website
-A high-performance, visually immersive travel website built with React + Vite to showcase tour packages and drive direct bookings.
+# 🌍 TravelCo
 
-Tech Stack
-ToolPurposeReact + ViteFramework & build toolReact RouterClient-side routingTailwind CSSStylingFramer MotionAnimations & page transitions
+A high-performance, visually immersive travel website built with **React + Vite** to showcase tour packages and drive direct bookings.
 
-Getting Started
-bash# Clone the repo
+---
+
+## 📖 Table of Contents
+
+- [✨ Features](#-features)
+- [🛠️ Tech Stack](#️-tech-stack)
+- [🚀 Getting Started](#-getting-started)
+- [📁 Project Structure](#-project-structure)
+- [📄 Pages](#-pages)
+- [🎨 Design System](#-design-system)
+- [♿ Accessibility](#-accessibility)
+- [📅 Development Timeline](#-development-timeline)
+- [✏️ Content Updates](#️-content-updates-marketing-team)
+
+---
+
+## ✨ Features
+
+- **Tour Filtering** — Filter destinations by continent, price range, duration, and activity type (Hiking, Beach, Safari) via `FilterSidebar.jsx`
+- **Booking Widget (MVP)** — Date picker (check-in / check-out) and guest counter (adults & children)
+- **Performance** — Lazy-loaded images via `react-lazy-load-image-component` and smooth page transitions with Framer Motion
+- **Mobile-First** — Fully responsive from 320px and up
+
+---
+
+## 🛠️ Tech Stack
+
+| Tool | Purpose |
+|---|---|
+| React + Vite | Framework & build tool |
+| React Router | Client-side routing |
+| Tailwind CSS | Styling |
+| Framer Motion | Animations & page transitions |
+
+---
+
+## 🚀 Getting Started
+
+Clone the repo and install dependencies:
+
+```bash
+# Clone the repo
 git clone https://github.com/your-org/travelco.git
 cd travelco
 
@@ -14,9 +52,15 @@ npm install
 
 # Start dev server
 npm run dev
-Open http://localhost:5173 in your browser.
+```
 
-Project Structure
+Open **http://localhost:5173** in your browser.
+
+---
+
+## 📁 Project Structure
+
+```
 src/
 ├── components/
 │   └── ui/           # Shared UI components
@@ -34,55 +78,120 @@ src/
 │   ├── Blog.jsx
 │   └── Contact.jsx
 └── App.jsx
+```
 
-Pages
-PageRouteKey FeaturesHomepage/Hero video, featured destinations, testimonialsDestinations/destinationsTour grid, filter by region/price/activityTour Detail/tours/:idItinerary tabs, photo gallery, booking widgetAbout/aboutStory timeline, team cardsBlog/blogArticle cards, category filterContact/contactMap, contact form, FAQ accordion
+---
 
-Features
-Tour Filtering
-Filter destinations by continent, price range, duration, and activity type (Hiking, Beach, Safari) via FilterSidebar.jsx.
-Booking Widget (MVP)
+## 📄 Pages
 
-Date picker (check-in / check-out)
-Guest counter (adults & children)
+| Page | Route | Key Features |
+|---|---|---|
+| Homepage | `/` | Hero video, featured destinations, testimonials |
+| Destinations | `/destinations` | Tour grid, filter by region/price/activity |
+| Tour Detail | `/tours/:id` | Itinerary tabs, photo gallery, booking widget |
+| About | `/about` | Story timeline, team cards |
+| Blog | `/blog` | Article cards, category filter |
+| Contact | `/contact` | Map, contact form, FAQ accordion |
 
-Performance
+---
 
-Lazy-loaded images via react-lazy-load-image-component
-Smooth page transitions with Framer Motion
+## 🎨 Design System
 
+**Colors:** Deep Navy · Terracotta · Soft Sand
 
-Design System
-Colors: Deep navy · Terracotta · Soft sand
-Fonts: Inter/Poppins (body) · Cormorant Garamond (hero headings)
+**Fonts:**
+- Body: Inter / Poppins
+- Hero Headings: Cormorant Garamond
 
-Accessibility
+---
 
-WCAG 2.1 AA compliant
-Semantic HTML (<main>, <section>, <article>)
-Color contrast ratio > 4.5:1
-Touch targets minimum 44×44px
-Mobile-first, supports screens from 320px
+## ♿ Accessibility
 
+- WCAG 2.1 AA compliant
+- Semantic HTML (`<main>`, `<section>`, `<article>`)
+- Color contrast ratio > 4.5:1
+- Touch targets minimum 44×44px
+- Mobile-first, supports screens from 320px
 
-Development Timeline
-WeekFocusDeliverable1Setup: repo, Tailwind, routing skeletonHello World on localhost2–3Component library + static homepagePixel-perfect homepage4Destinations page + filter logicFunctional filters5Single tour page + booking widgetDynamic routes6Animations, polish, mobile fixesSmooth UX
+---
 
-Content Updates (Marketing Team)
-The following can be updated without code changes:
+## 📅 Development Timeline
 
-Tour prices and availability
-Hero images and featured destination slots
-Blog posts
+| Week | Focus | Deliverable |
+|---|---|---|
+| 1 | Setup: repo, Tailwind, routing skeleton | Hello World on localhost |
+| 2–3 | Component library + static homepage | Pixel-perfect homepage |
+| 4 | Destinations page + filter logic | Functional filters |
+| 5 | Single tour page + booking widget | Dynamic routes |
+| 6 | Animations, polish, mobile fixes | Smooth UX |
 
-CineScope – Movie Discovery Platform
-A modern, fully frontend movie discovery website powered by the free TMDB API. No backend required — all user data is stored in the browser's localStorage.
+---
 
-Tech Stack
-ToolPurposeReact + ViteFramework & build toolReact Router v6NavigationAxios / FetchAPI callsRechartsStatistics chartsTailwind CSS / CSS ModulesStylingLocalStorageUser data persistence
+## ✏️ Content Updates (Marketing Team)
 
-Getting Started
-bash# Clone the repo
+The following can be updated **without code changes**:
+
+- Tour prices and availability
+- Hero images and featured destination slots
+- Blog posts
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License. See the [LICENSE.md](./LICENSE.md) file for details.
+
+# 🎬 CineScope
+
+A modern, fully frontend movie discovery platform powered by the free **TMDB API**. No backend required — all user data is stored in the browser's `localStorage`.
+
+---
+
+## 📖 Table of Contents
+
+- [✨ Features](#-features)
+- [🛠️ Tech Stack](#️-tech-stack)
+- [🚀 Getting Started](#-getting-started)
+- [📁 Project Structure](#-project-structure)
+- [📄 Pages](#-pages)
+- [🗄️ LocalStorage Schema](#️-localstorage-schema)
+- [🔌 API Endpoints Used](#-api-endpoints-used)
+- [📅 Development Timeline](#-development-timeline)
+- [🚢 Deployment](#-deployment)
+- [⚠️ Common Pitfalls](#️-common-pitfalls)
+- [📜 Attribution](#-attribution)
+
+---
+
+## ✨ Features
+
+- **Movie Browsing** — Popular, top-rated, now playing, and upcoming sections with genre chip filters, search with autocomplete, and a full filter sidebar (genre, year range, rating, language, sort order)
+- **User Data (localStorage)** — Add/remove watchlist movies, rate with 1–10 stars, write personal reviews, add notes, and create custom lists (e.g. "Movies to Watch This Weekend")
+- **Data Export** — Export all personal data as JSON
+- **Admin Dashboard (demo)** — Charts for genre breakdowns, rating distribution, and activity; manage interacted movies. Access by navigating to `/admin` or clicking the logo 5 times · Password: `admin123`
+- **Dark / Light Mode** — Theme toggling via context
+
+---
+
+## 🛠️ Tech Stack
+
+| Tool | Purpose |
+|---|---|
+| React + Vite | Framework & build tool |
+| React Router v6 | Navigation |
+| Axios / Fetch | API calls |
+| Recharts | Statistics charts |
+| Tailwind CSS / CSS Modules | Styling |
+| localStorage | User data persistence |
+
+---
+
+## 🚀 Getting Started
+
+Clone the repo and install dependencies:
+
+```bash
+# Clone the repo
 git clone https://github.com/your-org/cinescope.git
 cd cinescope
 
@@ -95,9 +204,17 @@ cp .env.example .env
 
 # Start dev server
 npm run dev
-Get your free API key at: https://www.themoviedb.org/settings/api
+```
 
-Project Structure
+> Get your free API key at: https://www.themoviedb.org/settings/api
+
+Open **http://localhost:5173** in your browser.
+
+---
+
+## 📁 Project Structure
+
+```
 src/
 ├── api/
 │   └── tmdb.js              # All TMDB API calls
@@ -119,37 +236,46 @@ src/
 │   ├── helpers.js
 │   └── constants.js
 └── App.jsx
+```
 
-Pages
-PageRouteDescriptionHome/Hero, carousels, genre chipsMovies/moviesAll movies with filters & sortingMovie Details/movie/:idFull info, cast, trailersSearch/search?q=Search resultsWatchlist/watchlistSaved movies (localStorage)My Ratings/ratingsMovies you've ratedCustom Lists/listsUser-created listsStats/statsPersonal movie statisticsAdmin Dashboard/adminCharts & management (demo)
+---
 
-Key Features
-Movie Browsing
+## 📄 Pages
 
-Popular, top-rated, now playing, and upcoming sections
-Genre chip filters, search with autocomplete
-Filter sidebar: genre, year range, rating, language, sort order
+| Page | Route | Description |
+|---|---|---|
+| Home | `/` | Hero, carousels, genre chips |
+| Movies | `/movies` | All movies with filters & sorting |
+| Movie Details | `/movie/:id` | Full info, cast, trailers |
+| Search | `/search?q=` | Search results |
+| Watchlist | `/watchlist` | Saved movies (localStorage) |
+| My Ratings | `/ratings` | Movies you've rated |
+| Custom Lists | `/lists` | User-created lists |
+| Stats | `/stats` | Personal movie statistics |
+| Admin Dashboard | `/admin` | Charts & management (demo) |
 
-User Data (localStorage)
+---
 
-Add/remove movies from watchlist
-Rate movies (1–10 stars) with personal reviews
-Add notes to any movie
-Create custom lists (e.g. "Movies to Watch This Weekend")
-Export all data as JSON
+## 🗄️ LocalStorage Schema
 
-Admin Dashboard (demo, no auth)
+```json
+{
+  "watchlist":   [{ "id", "title", "poster", "addedAt", "watched" }],
+  "ratings":     [{ "movieId", "rating", "review", "ratedAt" }],
+  "customLists": [{ "id", "name", "description", "movies" }],
+  "notes":       [{ "movieId", "note" }],
+  "preferences": { "theme", "defaultFilter", "itemsPerPage" }
+}
+```
 
-Access: navigate to /admin or click the logo 5 times · Password: admin123
+> ⚠️ localStorage limit is ~5–10MB. Avoid storing large blobs.
 
+---
 
-Metrics: total genres, average rating, watchlist count
-Charts: movies by genre, rating distribution, your activity
-Manage interacted movies (edit notes, remove ratings)
+## 🔌 API Endpoints Used
 
-
-API Endpoints Used
-jsGET /movie/popular
+```js
+GET /movie/popular
 GET /movie/top_rated
 GET /movie/now_playing
 GET /movie/upcoming
@@ -160,37 +286,56 @@ GET /movie/{id}/similar
 GET /search/movie
 GET /genre/movie/list
 GET /discover/movie
-Image base URL: https://image.tmdb.org/t/p/
-Poster sizes: w185, w342, w500 · Backdrop sizes: w780, w1280
+```
 
-LocalStorage Schema
-json{
-  "watchlist":   [{ "id", "title", "poster", "addedAt", "watched" }],
-  "ratings":     [{ "movieId", "rating", "review", "ratedAt" }],
-  "customLists": [{ "id", "name", "description", "movies" }],
-  "notes":       [{ "movieId", "note" }],
-  "preferences": { "theme", "defaultFilter", "itemsPerPage" }
-}
+**Image base URL:** `https://image.tmdb.org/t/p/`
 
-localStorage limit is ~5–10MB. Avoid storing large blobs.
+| Type | Sizes |
+|---|---|
+| Poster | `w185`, `w342`, `w500` |
+| Backdrop | `w780`, `w1280` |
 
+---
 
-Development Timeline
-WeekFocus1Setup, API service, homepage carousels, movie details2Search, filters, cast/trailers, watchlist & ratings3Admin dashboard, charts, custom lists, dark/light mode4Polish, error boundaries, responsive fixes, deploy
+## 📅 Development Timeline
 
-Deployment
-Recommended: Vercel or Netlify
-bashnpm run build
+| Week | Focus |
+|---|---|
+| 1 | Setup, API service, homepage carousels, movie details |
+| 2 | Search, filters, cast/trailers, watchlist & ratings |
+| 3 | Admin dashboard, charts, custom lists, dark/light mode |
+| 4 | Polish, error boundaries, responsive fixes, deploy |
+
+---
+
+## 🚢 Deployment
+
+Recommended: **Vercel** or **Netlify**
+
+```bash
+npm run build
 # Upload /dist folder or connect repo to Vercel/Netlify
+```
 
-Common Pitfalls
+---
 
-Never commit .env — always use environment variables for the API key
-Always provide a fallback image for missing posters
-Show loading skeletons while fetching data
-Test on real mobile devices, not just browser devtools
+## ⚠️ Common Pitfalls
 
+- **Never commit `.env`** — always use environment variables for the API key
+- Always provide a **fallback image** for missing posters
+- Show **loading skeletons** while fetching data
+- Test on **real mobile devices**, not just browser devtools
 
-Attribution
+---
+
+## 📜 Attribution
+
 This product uses the TMDB API but is not endorsed or certified by TMDB.
-TMDB Terms of Use
+
+[TMDB Terms of Use](https://www.themoviedb.org/documentation/api/terms-of-use)
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License. See the [LICENSE.md](./LICENSE.md) file for details.
