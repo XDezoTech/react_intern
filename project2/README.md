@@ -1,34 +1,71 @@
-# 🎬 FlickVault — Movie Discovery App
+# 🎬 CineScope
 
-A clean, minimal React movie website with a light theme and Netflix-style rows.
-Built with React 18, React Router v6, and the free TMDB API.
+A modern, fully frontend movie discovery platform powered by the free **TMDB API**. No backend required — all user data is stored in the browser's `localStorage`.
 
 ---
 
-## 🚀 Setup (3 steps)
+## 📖 Table of Contents
 
-### 1. Get your free TMDB API key
-1. Sign up at **https://www.themoviedb.org/**
-2. Go to **Settings → API**
-3. Copy your **API Key (v3 auth)**
+- [✨ Features](#-features)
+- [🛠️ Tech Stack](#️-tech-stack)
+- [🚀 Getting Started](#-getting-started)
+- [📁 Project Structure](#-project-structure)
+- [📄 Pages](#-pages)
+- [🗄️ LocalStorage Schema](#️-localstorage-schema)
+- [🔌 API Endpoints Used](#-api-endpoints-used)
+- [📅 Development Timeline](#-development-timeline)
+- [🚢 Deployment](#-deployment)
+- [⚠️ Common Pitfalls](#️-common-pitfalls)
+- [📜 Attribution](#-attribution)
 
-### 2. Add the key to the project
-Open `src/api/tmdb.js` and replace line 7:
-```js
-const API_KEY = 'YOUR_API_KEY_HERE';
-```
-with your real key, for example:
-```js
-const API_KEY = 'a1b2c3d4e5f6a1b2c3d4e5f6';
-```
+---
 
-### 3. Install and run
-Open **Command Prompt** (not PowerShell) and run:
-```cmd
+## ✨ Features
+
+- **Movie Browsing** — Popular, top-rated, now playing, and upcoming sections with genre chip filters, search with autocomplete, and a full filter sidebar (genre, year range, rating, language, sort order)
+- **User Data (localStorage)** — Add/remove watchlist movies, rate with 1–10 stars, write personal reviews, add notes, and create custom lists (e.g. "Movies to Watch This Weekend")
+- **Data Export** — Export all personal data as JSON
+- **Admin Dashboard (demo)** — Charts for genre breakdowns, rating distribution, and activity; manage interacted movies. Access by navigating to `/admin` or clicking the logo 5 times · Password: `admin123`
+- **Dark / Light Mode** — Theme toggling via context
+
+---
+
+## 🛠️ Tech Stack
+
+| Tool | Purpose |
+|---|---|
+| React + Vite | Framework & build tool |
+| React Router v6 | Navigation |
+| Axios / Fetch | API calls |
+| Recharts | Statistics charts |
+| Tailwind CSS / CSS Modules | Styling |
+| localStorage | User data persistence |
+
+---
+
+## 🚀 Getting Started
+
+Clone the repo and install dependencies:
+
+```bash
+# Clone the repo
+git clone https://github.com/your-org/cinescope.git
+cd cinescope
+
+# Install dependencies
 npm install
-npm start
+
+# Add your TMDB API key
+cp .env.example .env
+# Edit .env → VITE_TMDB_API_KEY=your_key_here
+
+# Start dev server
+npm run dev
 ```
-App opens at **http://localhost:3000** 🎉
+
+> Get your free API key at: https://www.themoviedb.org/settings/api
+
+Open **http://localhost:5173** in your browser.
 
 ---
 
@@ -37,75 +74,119 @@ App opens at **http://localhost:3000** 🎉
 ```
 src/
 ├── api/
-│   └── tmdb.js              ← All TMDB API functions
+│   └── tmdb.js              # All TMDB API calls
 ├── components/
-│   ├── Header.jsx            ← Top navigation
-│   ├── Footer.jsx            ← Bottom footer
-│   ├── MovieCard.jsx         ← Reusable movie card
-│   └── UI.jsx                ← Loader, Toast, RatingStars
-├── pages/
-│   ├── Home.jsx              ← Netflix-style rows + hero
-│   ├── Movies.jsx            ← Browse + filters
-│   ├── MovieDetails.jsx      ← Full detail + notes + trailer
-│   ├── Search.jsx            ← Search movies
-│   ├── Watchlist.jsx         ← Saved movies list
-│   ├── Ratings.jsx           ← Your rated movies
-│   ├── Admin.jsx             ← Stats dashboard
-│   └── NotFound.jsx          ← 404 page
+│   ├── layout/              # Header, Footer
+│   ├── movies/              # MovieCard, MovieGrid, MovieCarousel, MovieFilters
+│   ├── ui/                  # Button, RatingStars, Loader, ErrorMessage
+│   └── dashboard/           # MetricCard, Chart, DataTable
+├── context/
+│   ├── ThemeContext.jsx
+│   └── UserDataContext.jsx
+├── hooks/
+│   ├── useMovies.js
+│   ├── useLocalStorage.js
+│   └── useFilters.js
+├── pages/                   # One file per route
 ├── utils/
-│   └── storage.js            ← localStorage (watchlist, ratings, notes)
-├── App.js                    ← Routes
-├── index.js                  ← Entry point
-└── index.css                 ← All styles (light theme)
+│   ├── storage.js           # localStorage helpers
+│   ├── helpers.js
+│   └── constants.js
+└── App.jsx
 ```
 
 ---
 
-## ✨ Features
+## 📄 Pages
 
-| Feature | Notes |
+| Page | Route | Description |
+|---|---|---|
+| Home | `/` | Hero, carousels, genre chips |
+| Movies | `/movies` | All movies with filters & sorting |
+| Movie Details | `/movie/:id` | Full info, cast, trailers |
+| Search | `/search?q=` | Search results |
+| Watchlist | `/watchlist` | Saved movies (localStorage) |
+| My Ratings | `/ratings` | Movies you've rated |
+| Custom Lists | `/lists` | User-created lists |
+| Stats | `/stats` | Personal movie statistics |
+| Admin Dashboard | `/admin` | Charts & management (demo) |
+
+---
+
+## 🗄️ LocalStorage Schema
+
+```json
+{
+  "watchlist":   [{ "id", "title", "poster", "addedAt", "watched" }],
+  "ratings":     [{ "movieId", "rating", "review", "ratedAt" }],
+  "customLists": [{ "id", "name", "description", "movies" }],
+  "notes":       [{ "movieId", "note" }],
+  "preferences": { "theme", "defaultFilter", "itemsPerPage" }
+}
+```
+
+> ⚠️ localStorage limit is ~5–10MB. Avoid storing large blobs.
+
+---
+
+## 🔌 API Endpoints Used
+
+```js
+GET /movie/popular
+GET /movie/top_rated
+GET /movie/now_playing
+GET /movie/upcoming
+GET /movie/{id}
+GET /movie/{id}/credits
+GET /movie/{id}/videos
+GET /movie/{id}/similar
+GET /search/movie
+GET /genre/movie/list
+GET /discover/movie
+```
+
+**Image base URL:** `https://image.tmdb.org/t/p/`
+
+| Type | Sizes |
 |---|---|
-| Home | Hero banner, Netflix-style rows, genre filter pills |
-| Browse | Grid view, filter by genre / year / rating / sort |
-| Details | Full info, cast, YouTube trailer, similar movies |
-| **Notes** | ✏️ Write personal notes on any movie (saved in browser) |
-| Watchlist | Save movies, mark as watched, tabs (All / To Watch / Watched) |
-| Ratings | Rate 1–10 with stars, sort by score/date/title |
-| Dashboard | Stats, progress bar, rating distribution chart, activity feed |
+| Poster | `w185`, `w342`, `w500` |
+| Backdrop | `w780`, `w1280` |
 
 ---
 
-## 🎨 Design Decisions
+## 📅 Development Timeline
 
-- **Light theme** — clean white/warm gray palette, no dark background
-- **Playfair Display** — elegant serif display font for headings
-- **Outfit** — modern geometric sans for body text
-- **Netflix-style rows** — horizontal scrollable rows on Home page
-- **Minimal cards** — simple poster cards with hover overlay
-- **No excessive color** — accent red used sparingly for CTAs only
-
----
-
-## 💡 How Notes Work
-
-1. Go to any **Movie Details** page
-2. Scroll to the **📝 My Notes** section
-3. Click **"+ Add a Note"**
-4. Type anything — review, thoughts, quotes
-5. Click **Save Note**
-
-Your note is saved to `localStorage` and also shows as a preview
-on the **Watchlist** page next to that movie.
+| Week | Focus |
+|---|---|
+| 1 | Setup, API service, homepage carousels, movie details |
+| 2 | Search, filters, cast/trailers, watchlist & ratings |
+| 3 | Admin dashboard, charts, custom lists, dark/light mode |
+| 4 | Polish, error boundaries, responsive fixes, deploy |
 
 ---
 
-## ⚠️ Using Command Prompt (Windows)
+## 🚢 Deployment
 
-If you get a PowerShell error, use **Command Prompt** instead:
-- Press `Win + R` → type `cmd` → Enter
-- Navigate: `cd C:\path\to\flickvault`
-- Run: `npm install` then `npm start`
+Recommended: **Vercel** or **Netlify**
+
+```bash
+npm run build
+# Upload /dist folder or connect repo to Vercel/Netlify
+```
 
 ---
 
-Built for learning React. Data from TMDB.
+## ⚠️ Common Pitfalls
+
+- **Never commit `.env`** — always use environment variables for the API key
+- Always provide a **fallback image** for missing posters
+- Show **loading skeletons** while fetching data
+- Test on **real mobile devices**, not just browser devtools
+
+---
+
+## 📜 Attribution
+
+This product uses the TMDB API but is not endorsed or certified by TMDB.
+
+[TMDB Terms of Use](https://www.themoviedb.org/documentation/api/terms-of-use)
